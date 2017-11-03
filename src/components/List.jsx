@@ -6,14 +6,13 @@ var ingredients = [{"id": 1, "text": "ham"}, {"id": 2, "text": "cheese"}, {"id":
 
 export default class List extends Component {
     render() {
-        var listItems = ingredients.map(function (item) {
-            return <ListItem key={item.id} ingredients={item.text} />;
-        });
+       const createItem = function(text, index) {
+         return <ListItem key={index + text} text={text} />
+       };
         return (
-            <div>
-                <ul>{listItems}</ul>
-                <div><ListAdder ingredients={ingredients}/></div>
-            </div>
+            <ul>
+                {this.props.items.map(createItem)}
+            </ul>
         );
     }
 }
